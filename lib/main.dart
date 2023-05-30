@@ -9,13 +9,11 @@ import 'package:webview_flutter/webview_flutter.dart';
 import 'home_page.dart';
 
 void main() {
-  runApp( MyApp('https://pub.dev/packages/webview_flutter', '12'));
+  runApp( MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  final String url;
-  final String userId;
-  MyApp( this.url,  this.userId);
+  MyApp();
 
 
   // This widget is the root of your application.
@@ -50,13 +48,13 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
         body: InAppWebView(
           initialUrlRequest: URLRequest(
-            //url: Uri.parse('https://httpbin.org/post'),
             url: Uri.parse('https://jsonplaceholder.typicode.com/posts'),
             method: 'POST',
-            body: Uint8List.fromList(utf8.encode("user_id=${Uri.encodeQueryComponent('1')}, body=${Uri.encodeQueryComponent('This page has a body that describes what it consists of')}, title=${Uri.encodeQueryComponent('The title of the page is the image of the paragraph for the first sight')}")),
-            // headers: {
-            //   'Content-Type': 'multipart/form-data',
-            // }
+            body: Uint8List.fromList(utf8.encode(
+                    " user_id=${Uri.encodeQueryComponent('1')},"
+                    " body=${Uri.encodeQueryComponent('This page has a body that describes what it consists of')},"
+                    " title=${Uri.encodeQueryComponent('The title of the page is the image of the paragraph for the first sight')}")
+            ),
           ),
           onWebViewCreated: (controller){
 
